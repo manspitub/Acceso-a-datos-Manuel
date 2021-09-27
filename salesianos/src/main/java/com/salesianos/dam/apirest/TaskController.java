@@ -35,4 +35,12 @@ public class TaskController {
         repository.deleteById();
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public Task edit (@RequestBody Task task, @PathVariable Long id) {
+        Task antigua = repository.findById(id).orElse(task);
+        antigua.setText(task.getText());
+        antigua.setTitle(task.getTitle());
+
+    }
 }
