@@ -1,4 +1,4 @@
-package com.salesianos.ModeloManyToMany;
+package com.salesianos.ModeloManyToMany.repositories;
 
 import com.salesianos.ModeloManyToMany.model.JustAdded;
 import org.springframework.data.jpa.repository.JpaRepository;

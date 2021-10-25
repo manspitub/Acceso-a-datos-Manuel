@@ -1,6 +1,7 @@
 package com.salesianos.ModeloManyToMany.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Playlist {
     @Id @GeneratedValue
     private Long id;
@@ -19,6 +21,7 @@ public class Playlist {
     private String name, description;
 
     @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER)
+    @Builder.Default
     private List<JustAdded> justAddeds = new ArrayList<>();
 
     public Playlist(String name, String description) {

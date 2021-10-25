@@ -1,5 +1,6 @@
 package com.salesianos.ModeloManyToMany.model;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Data @NoArgsConstructor
 @Entity
+
 public class JustAdded {
 
     @EmbeddedId
@@ -29,6 +31,6 @@ public class JustAdded {
     @DateTimeFormat(pattern= "yyyy-mm-dd")
     private LocalDateTime creationDate;
 
-    @OrderBy("playlist")
-    private Order orderByPlaylist;
+
+
 }

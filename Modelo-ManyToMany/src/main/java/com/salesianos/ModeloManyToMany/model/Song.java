@@ -1,17 +1,17 @@
 package com.salesianos.ModeloManyToMany.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Song {
 
     @Id
@@ -23,9 +23,8 @@ public class Song {
     @ManyToOne
     private Artist artist;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @OneToMany(mappedBy="song", fetch = FetchType.EAGER)
+    @Builder.Default
+    @OneToMany(mappedBy="song")
     private List<JustAdded> justAddeds = new ArrayList<>();
 
     public Song(String title, String album, String year, Artist artist) {
@@ -40,4 +39,15 @@ public class Song {
         this.album = album;
         this.year = year;
     }
+
+    public void addToArtist(Artist a) {
+        artist = a;
+        a.getSongs().add(this);
+    }
+
+    public void removeFromArtist(Artist a) {
+        a.getSongs().remove(this);
+        artist = null;
+    }
+
 }

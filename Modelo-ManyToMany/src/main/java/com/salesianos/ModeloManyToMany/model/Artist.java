@@ -10,6 +10,7 @@ import java.util.List;
 @Data @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Artist {
     @Id @GeneratedValue
     private Long id;
@@ -21,6 +22,7 @@ public class Artist {
     }
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @Builder.Default
     @OneToMany(mappedBy="artist", fetch = FetchType.EAGER)
     private List<Song> songs = new ArrayList<>();
 
