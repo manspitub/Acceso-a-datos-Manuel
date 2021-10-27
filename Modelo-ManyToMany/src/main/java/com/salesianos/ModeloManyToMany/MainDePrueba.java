@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -30,21 +31,43 @@ public class MainDePrueba {
                 .name("Dani Martin")
                 .build();
 
-        artistService.edit(artist);
+        artistService.save(artist);
+
+        List<Song> songs = List.of(
+                Song.builder().title("Zapatillas").year("2005").album("Zapatillas").build(),
+                Song.builder().title("La madre de Jose").year("2003").album("Estados de Ánimo").build(),
+                Song.builder().title("Son Sueños").year("2002").album("A contracorriente").build(),
+                Song.builder().title("Insoportable").year("2003").album("Estados de Ánimo").build()
+                );
 
         Song song = Song.builder()
-                .title("Zapatillas")
-                .year("2005")
-                .artist(artist)
-                .build();
+                        .title("Volver a Disfrutar")
+                        .year("2003")
+                                .album("Estados de animo")
+                                        .build();
 
-        songService.save(song);
+        songService.saveAll(songs);
+
 
         Playlist playlist = Playlist.builder()
                 .name("Top 100")
                 .description("Las mejores Canciones")
                 .build();
-        playListService.edit(playlist);
+        playListService.save(playlist);
+
+        for(int i = 0; i < songs.size(); i++){
+            songs.get(i).addToArtist(artist);
+        }
+
+        songService.saveAll(songs);
+
+
+        artistService.edit(artist);
+
+
+        song = justAddedService.added(song, playlist);
+
+
 
 
     }

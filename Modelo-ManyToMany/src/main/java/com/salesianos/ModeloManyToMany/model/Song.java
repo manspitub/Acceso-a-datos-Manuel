@@ -24,7 +24,7 @@ public class Song {
     private Artist artist;
 
     @Builder.Default
-    @OneToMany(mappedBy="song")
+    @OneToMany(mappedBy="song", cascade = CascadeType.REMOVE)
     private List<JustAdded> justAddeds = new ArrayList<>();
 
     public Song(String title, String album, String year, Artist artist) {

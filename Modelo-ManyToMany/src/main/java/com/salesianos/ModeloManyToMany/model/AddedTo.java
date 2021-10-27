@@ -1,16 +1,18 @@
 package com.salesianos.ModeloManyToMany.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-@Data @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
+@Getter @Setter
 public class AddedTo implements Serializable {
 
-    long playlist_id;
+   private Long playlist_id;
 
-    long song_id;
+   private Long song_id;
 }

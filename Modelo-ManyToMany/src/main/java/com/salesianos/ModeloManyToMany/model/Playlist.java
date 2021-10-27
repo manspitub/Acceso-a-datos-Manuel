@@ -20,7 +20,7 @@ public class Playlist {
 
     private String name, description;
 
-    @OneToMany(mappedBy = "playlist", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "playlist", cascade = CascadeType.REMOVE)
     @Builder.Default
     private List<JustAdded> justAddeds = new ArrayList<>();
 
