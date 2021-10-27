@@ -1,13 +1,17 @@
 package com.salesianos.HerenciasManuel.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Setter @Getter
+@SuperBuilder
 public abstract class Cliente {
     @Id
     @GeneratedValue
@@ -15,6 +19,14 @@ public abstract class Cliente {
 
     private String name, adress, phone;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 
 
+
+    public Cliente(String name, String adress, String phone) {
+        this.name = name;
+        this.adress = adress;
+        this.phone = phone;
+    }
 }
