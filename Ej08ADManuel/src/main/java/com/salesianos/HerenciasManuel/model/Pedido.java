@@ -1,16 +1,21 @@
 package com.salesianos.HerenciasManuel.model;
 
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 
+
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder()
 @Getter @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Pedido {
+
 
     @Id
     @GeneratedValue
@@ -26,15 +31,13 @@ public class Pedido {
 
 
     public void addCliente(Cliente c) {
-        this.cliente = c;
-        if (c.getPedidos() == null)
-            c.setPedidos((new ArrayList<>()));
+        cliente = c;
         c.getPedidos().add(this);
     }
 
     public void removeCliente(Cliente c) {
         c.getPedidos().remove(this);
-        this.cliente = null;
+        cliente = null;
     }
 
     public Pedido(String n, String a, float p){
@@ -42,7 +45,6 @@ public class Pedido {
         this.address = a;
         this.price = p;
     }
-
 
 
 

@@ -1,10 +1,7 @@
 package com.salesianos.HerenciasManuel.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -17,7 +14,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@Builder
 @Getter
 @Setter
 public class Empleado {
@@ -31,6 +28,7 @@ public class Empleado {
 
     private String department;
 
+    @Builder.Default
     @OneToMany(mappedBy = "empleado")
     private List<ClienteCorporativo> clienteCorporativos = new ArrayList<>();
 }

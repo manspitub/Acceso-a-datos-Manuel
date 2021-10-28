@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 @AllArgsConstructor @NoArgsConstructor
 @SuperBuilder
 @Getter @Setter
+@DiscriminatorValue("CC")
+
 public class ClienteCorporativo extends Cliente{
 
     private String contactName, creditRating;
@@ -24,6 +27,8 @@ public class ClienteCorporativo extends Cliente{
     @ManyToOne
     @JoinColumn(name = "empleado")
     private Empleado empleado;
+
+
 
     public void addEmpleado(Empleado e) {
         this.empleado = e;

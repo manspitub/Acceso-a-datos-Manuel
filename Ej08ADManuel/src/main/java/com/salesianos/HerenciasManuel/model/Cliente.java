@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +13,16 @@ import java.util.List;
 @Entity
 @Setter @Getter
 @SuperBuilder
-public abstract class Cliente {
+@DiscriminatorValue("CN")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Cliente implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
 
     private String name, adress, phone;
 
+    @Builder.Default
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

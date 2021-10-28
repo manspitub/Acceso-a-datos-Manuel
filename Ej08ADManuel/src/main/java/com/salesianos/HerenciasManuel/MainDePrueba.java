@@ -1,9 +1,6 @@
 package com.salesianos.HerenciasManuel;
 
-import com.salesianos.HerenciasManuel.model.ClienteCorporativo;
-import com.salesianos.HerenciasManuel.model.ClienteParticular;
-import com.salesianos.HerenciasManuel.model.Empleado;
-import com.salesianos.HerenciasManuel.model.Pedido;
+import com.salesianos.HerenciasManuel.model.*;
 import com.salesianos.HerenciasManuel.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -42,7 +39,12 @@ public class MainDePrueba {
                         .build()
         );
 
+
+
         pedidoService.saveAll(pedidos);
+
+
+
 
         ClienteCorporativo clienteCorporativo = ClienteCorporativo.builder()
                 .contactName("Alberto")
@@ -73,9 +75,37 @@ public class MainDePrueba {
 
 
                 );
+
+        Empleado e1 = Empleado.builder()
+                        .name("Manuel")
+                                .department("Coordinacion")
+                                        .salary(2000)
+                                                .surname("Spinola Tubío").build();
+        empleadoService.save(e1);
+
+
         empleadoService.saveAll(empleados);
 
-        
+
+
+        Cliente cliente = new ClienteCorporativo("nombre", "apellidos", 6f, e1);
+
+        clienteService.save(cliente);
+
+        for (int i = 0; i < pedidos.size(); i++){
+            pedidos.get(i).addCliente(cliente);
+        }
+
+        pedidoService.saveAll(pedidos);
+
+        clienteCorporativo.addEmpleado(e1);
+
+        clienteCorporativoService.save(clienteCorporativo);
+
+
+
+
+
 
 
     }
