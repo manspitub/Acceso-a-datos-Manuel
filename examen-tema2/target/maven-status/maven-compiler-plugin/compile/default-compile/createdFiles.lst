@@ -1,0 +1,17 @@
+com\salesianostriana\dam\model\Curso.class
+com\salesianostriana\dam\model\Curso$CursoBuilder.class
+com\salesianostriana\dam\dto\GetCursoConProfesoresDto$GetCursoConProfesoresDtoBuilder.class
+com\salesianostriana\dam\repos\CursoRepository.class
+com\salesianostriana\dam\model\Imparte.class
+com\salesianostriana\dam\controller\MainController.class
+com\salesianostriana\dam\model\Profesor.class
+com\salesianostriana\dam\model\Profesor$ProfesorBuilder.class
+com\salesianostriana\dam\repos\ProfesorRepository.class
+com\salesianostriana\dam\DemoApplication.class
+com\salesianostriana\dam\dto\GetCursoConProfesoresDto.class
+com\salesianostriana\dam\dto\GetCursoDto$GetCursoDtoBuilder.class
+com\salesianostriana\dam\model\ImpartePK.class
+com\salesianostriana\dam\repos\ImparteRepository.class
+com\salesianostriana\dam\model\Imparte$ImparteBuilder.class
+com\salesianostriana\dam\dto\GetCursoConProfesoresDtoConverter.class
+com\salesianostriana\dam\dto\GetCursoDto.class
